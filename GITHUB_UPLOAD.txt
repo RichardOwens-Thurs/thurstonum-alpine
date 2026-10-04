@@ -1,0 +1,11 @@
+GITHUB UPLOAD — THURSTON ALPINE V14
+
+1. Extract this ZIP.
+2. Open the extracted folder.
+3. In GitHub, open your repository and choose Add file -> Upload files.
+4. Upload the CONTENTS of this folder, including the entire assets folder.
+5. Make sure index.html is in the repository root and assets/ is a folder in that same root.
+6. Do NOT upload V12 or any private production copy.
+7. For GitHub Pages, use Settings -> Pages -> Deploy from a branch -> main -> /(root).
+
+The public V14 package has been checked for personal name, phone, email and certification details.
