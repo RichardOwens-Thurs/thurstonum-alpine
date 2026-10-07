@@ -1,28 +1,20 @@
-THURSTON ALPINE — V8 DEMO
+Thurston Alpine — V18
 
-This is the V8 website demo for Thurston Alpine private snowboard instruction.
+Updates in V18:
+- Added clear private coaching pricing.
+- 1 hour: CHF 90 / 115 / 140 / 165 for 1–4 people.
+- Half day (3 hours): CHF 225 / 250 / 275 / 300 for 1–4 people.
+- Full day (6 hours): CHF 400 / 450 / 500 / 550 for 1–4 people.
+- Prices are per booking, not per person.
+- Added session and group-size selectors to the availability calendar.
+- Calendar now filters available start times according to the selected session length.
+- 1-hour sessions can start hourly between 09:00 and 14:00.
+- Half-day sessions offer 09:00 and 12:00 starts.
+- Full-day sessions offer a 09:00 start.
+- Added sample December 2026 and January 2027 availability with closed dates for demonstration.
+- Added next/previous month controls for the demo months.
+- Booking summary and enquiry form are populated with selected session, group size, requested time and price.
+- Added phone and riding-level fields to the booking enquiry form.
+- Added English/German translations for the new booking and pricing interface.
 
-V8 personal touches:
-- Added clickable mobile contact: +41 76 229 77 53
-- Added clickable email: info@thurstonum-alpine.ch
-- Added mobile/email contact cards in the booking section
-- Added phone/email details to the footer
-- Updated the booking form mailto address to info@thurstonum-alpine.ch
-- Improved mobile navigation dropdown behaviour
-
-V7 features retained:
-- Fixed/persistent home header with scroll transition
-- Larger Thurston Alpine logo
-- Responsive gallery grid
-- Full-resolution gallery lightbox
-- EN / DE language toggle with remembered selection
-- Demo availability calendar
-
-This remains a static demo. The booking calendar and form are not yet connected to a live booking/payment system.
-
-V13 learning page
-- Added learning.html with a structured Learning / teaching approach page based on the supplied source material.
-- Covers instructor competencies, assessment and goal setting, variation, developmental stages, adult/adolescent considerations, and slope safety.
-- Added EN/DE translations and Learning navigation item.
-- Added source-reference visuals from the supplied learning material.
-- Content is intentionally presented as a first draft for review; overlapping age ranges from the source are preserved.
+This remains a front-end demonstration. It does not yet create or hold real reservations or process payment. The next production step is connecting the availability blocks to a real calendar/booking backend.

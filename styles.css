@@ -8,7 +8,7 @@ header{position:absolute;z-index:20;top:0;left:0;width:100%;color:#fff}.site-hea
 
 /* V7 refinements: persistent home navigation, larger brand mark, balanced photo grids and lightbox */
 .site-header.home-header{position:fixed;transition:background .25s ease,color .25s ease,box-shadow .25s ease}.site-header.home-header.is-scrolled{background:rgba(247,247,245,.96);color:var(--black);border-bottom:1px solid var(--line);backdrop-filter:blur(10px);box-shadow:0 8px 30px rgba(0,0,0,.06)}
-.site-header.home-header.is-scrolled .nav-links a{color:#303433}.site-header.home-header.is-scrolled .nav-links a:hover{color:#000}.site-header.home-header.is-scrolled .language{border-color:rgba(23,25,24,.2)}.site-header.home-header.is-scrolled .language button.active{background:var(--black);color:#fff}site-header.home-header .brand img{width:205px;height:76px}
+.site-header.home-header.is-scrolled .nav-links a{color:#303433}.site-header.home-header.is-scrolled .nav-links a:hover{color:#000}.site-header.home-header.is-scrolled .language{border-color:rgba(23,25,24,.2)}.site-header.home-header.is-scrolled .language button.active{background:var(--black);color:#fff} .site-header.home-header .brand img{width:205px;height:76px}
 .photo-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;grid-auto-flow:row}.photo{min-height:0!important;aspect-ratio:4/3}.photo.tall,.photo.wide,.photo.square{grid-column:auto;min-height:0!important}.photo img{height:100%;width:100%;object-fit:cover;transition:transform .35s ease}.photo:hover img{transform:scale(1.025)}
 .lightbox{position:fixed;inset:0;z-index:100;background:rgba(8,11,11,.92);display:none;align-items:center;justify-content:center;padding:34px}.lightbox.open{display:flex}.lightbox img{width:auto;max-width:min(94vw,1500px);max-height:88vh;object-fit:contain}.lightbox-close{position:absolute;top:18px;right:24px;border:0;background:transparent;color:#fff;font-size:2.2rem;line-height:1;cursor:pointer}.lightbox-caption{position:absolute;left:24px;bottom:18px;color:rgba(255,255,255,.72);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase}
 @media(max-width:1000px){.photo-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.site-header.home-header .brand img{width:185px;height:72px}}
@@ -162,3 +162,42 @@ header{position:absolute;z-index:20;top:0;left:0;width:100%;color:#fff}.site-hea
 .cards .card:hover .card-arrow {
   transform: translateY(4px);
 }
+
+/* V18 — booking and pricing */
+.pricing-block{margin-top:58px;border-top:1px solid rgba(255,255,255,.12);padding-top:48px}
+.pricing-heading{display:grid;grid-template-columns:1fr .8fr;gap:50px;align-items:end}
+.pricing-heading h3{color:#fff;font-size:1.55rem;margin:8px 0 0}
+.pricing-heading p{color:#c3c8c6;margin:0;max-width:520px}
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:30px}
+.price-card{border:1px solid rgba(255,255,255,.13);background:#202422;padding:27px 24px;min-height:190px}
+.price-kicker{font-size:.62rem;letter-spacing:.16em;color:var(--ice);font-weight:750}
+.price-main{font-size:2rem;font-weight:800;letter-spacing:-.04em;margin:16px 0 10px;color:#fff}
+.price-card p{font-size:.82rem;color:#c3c8c6;margin:0;line-height:1.6}
+.price-table-wrap{margin-top:16px;overflow-x:auto}
+.price-table{width:100%;border-collapse:collapse;font-size:.78rem;background:#181b19}
+.price-table th,.price-table td{padding:13px 14px;border:1px solid rgba(255,255,255,.1);text-align:center;white-space:nowrap}
+.price-table thead th{font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;color:#aebcc0;font-weight:750}
+.price-table tbody th{text-align:left;color:#fff;font-weight:650}
+.price-table td{color:#e7eae8}
+.price-note{font-size:.68rem!important;color:#929995!important;margin:11px 0 0!important}
+.booking-options{display:grid;grid-template-columns:1.2fr 1fr .8fr;gap:15px;margin-top:35px;align-items:end}
+.booking-options>div{display:grid;gap:7px}
+.booking-options label{font-size:.67rem;letter-spacing:.1em;text-transform:uppercase;font-weight:750}
+.booking-options select{width:100%;border:1px solid var(--line);padding:12px;background:#fff;font:inherit;font-size:.8rem;outline:none}
+.booking-options select:focus{border-color:#657a81}
+.booking-price{background:var(--black);color:#fff;padding:12px 15px;min-height:45px;display:flex!important;justify-content:space-between;align-items:center;gap:15px}
+.booking-price span{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:#aebcc0}
+.booking-price strong{font-size:1.1rem}
+.slot-heading{display:flex;justify-content:space-between;gap:20px;align-items:start}
+.slot-heading h3{margin:0 0 5px}
+.slot-heading p{margin:0;color:var(--stone);font-size:.76rem}
+.slot-duration{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);white-space:nowrap}
+.booking-note{margin-top:18px;color:var(--stone);font-size:.72rem;max-width:760px}
+.field select{border:1px solid var(--line);padding:11px 12px;background:#fff;outline:none;font:inherit}
+@media(max-width:900px){.pricing-heading{grid-template-columns:1fr;gap:15px}.price-grid{grid-template-columns:1fr}.booking-options{grid-template-columns:1fr}.booking-price{min-height:0}}
+
+
+/* V19: pricing and booking split */
+.page-shell{padding-top:88px}.page-intro{display:grid;grid-template-columns:1fr .72fr;gap:80px;align-items:end;padding:70px 0 75px}.page-intro h1{max-width:760px;margin-top:14px}.page-intro p{max-width:560px;font-size:1.05rem;margin:0}.pricing-feature{padding:0 0 85px}.pricing-feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}.pricing-feature-grid article{background:#fff;padding:38px 34px 42px;min-height:230px}.pricing-feature-grid .price-kicker{display:block;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--stone);font-weight:750}.pricing-feature-grid strong{display:block;font-size:3.1rem;line-height:1;margin:35px 0 12px;font-weight:500}.pricing-feature-grid p{margin:0;font-size:.82rem}.pricing-table-section{padding-top:0;padding-bottom:90px}.pricing-note{background:var(--black);color:#fff;padding:90px 0}.pricing-note h2{color:#fff}.pricing-note p{color:#c7ccca;max-width:600px}.lesson-actions{display:flex;gap:10px;margin-top:34px;flex-wrap:wrap}.availability-preview{background:#eef2f1}.availability-preview .two-col{align-items:start}.availability-preview h2{max-width:650px}.availability-preview p{max-width:620px;margin:22px 0 28px}.availability-mini{background:#fff;border:1px solid var(--line)}.availability-mini-head{display:flex;justify-content:space-between;padding:18px 20px;border-bottom:1px solid var(--line);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;font-weight:750}.availability-mini-head span:last-child{color:var(--stone)}.availability-mini-list{display:grid}.availability-mini-date{display:flex;justify-content:space-between;align-items:center;padding:17px 20px;border-bottom:1px solid var(--line)}.availability-mini-date:last-child{border-bottom:0}.availability-mini-date strong{font-size:.85rem}.availability-mini-date span{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:#50645e}.booking-controls-section{padding-bottom:70px}.duration-note,.booking-note{font-size:.75rem;color:var(--stone);margin:18px 0 0}.booking-form-section{padding-top:70px}.booking-form-section .booking-card{margin-top:0;max-width:900px}.booking-form-section h2{margin:10px 0 25px}.booking-price{display:flex;flex-direction:column;justify-content:center;background:var(--black);color:#fff;padding:15px 18px}.booking-price span{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:#c7ccca}.booking-price strong{font-size:1.45rem;margin-top:3px;font-weight:500}.site-header.solid{z-index:50}.site-header.home-header{z-index:50}.site-header.home-header .brand{transition:transform .25s ease}.site-header.home-header .light-logo,.site-header.home-header .dark-logo{transition:opacity .2s ease}.site-header.home-header:not(.is-scrolled) .dark-logo{display:none}.site-header.home-header.is-scrolled .light-logo{display:none}.site-header.home-header.is-scrolled .dark-logo{display:block}.site-header.home-header.is-scrolled .brand{transform:none}.site-header.home-header.is-scrolled{background:rgba(247,247,245,.97);color:var(--black);border-bottom:1px solid var(--line);backdrop-filter:blur(10px);box-shadow:0 8px 30px rgba(0,0,0,.06)}
+@media(max-width:900px){.page-intro{grid-template-columns:1fr;gap:30px}.pricing-feature-grid{grid-template-columns:1fr}.availability-preview .two-col{grid-template-columns:1fr}.booking-price{min-height:80px}.lesson-actions{margin-top:28px}}
+@media(max-width:620px){.page-shell{padding-top:74px}.page-intro{padding:55px 0 55px}.page-intro h1{font-size:clamp(2.8rem,13vw,4.5rem)}.pricing-feature-grid article{padding:30px 25px}.pricing-feature-grid strong{font-size:2.7rem}.availability-mini-head{display:block}.availability-mini-head span{display:block}.availability-mini-head span:last-child{margin-top:5px}.booking-controls-section{padding-bottom:45px}}
