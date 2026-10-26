@@ -79,7 +79,7 @@ I18N.de.bookingPage.holdExpired = 'Deine temporäre Reservierung ist abgelaufen.
 let lang = localStorage.getItem('thurstonLang') || 'en';
 const API_BASE_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
   ? 'http://localhost:8080'
-  : 'https://quilt-partial-powell-orientation.trycloudflare.com';
+  : 'https://thurston-alpine-backend-472780220613.europe-west6.run.app';
 const availabilityCache = new Map();
 const loadingDays = new Set();
 const availabilityData = {};
