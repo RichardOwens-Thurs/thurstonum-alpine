@@ -83,6 +83,9 @@ const API_BASE_URL = (window.location.hostname === 'localhost' || window.locatio
 const availabilityCache = new Map();
 const loadingDays = new Set();
 const availabilityData = {};
+// Deduplicate concurrent monthly requests and cool down after a failed request.
+const monthAvailabilityRequests = new Map();
+const MONTH_AVAILABILITY_RETRY_COOLDOWN_MS = 30 * 1000;
 const prices={hour:{1:90,2:115,3:140,4:165},half:{1:225,2:250,3:275,4:300},full:{1:400,2:450,3:500,4:550}};
 const sessionMeta={hour:{hours:1},half:{hours:3},full:{hours:6}};
 let currentMonth={year:2026,month:11};
@@ -173,34 +176,64 @@ function reconcileSelectedDate(){
 })();
 async function fetchMonthAvailabilityFor(year, monthIndex){
  const month=monthKey(year,monthIndex);
- if(availabilityData[month]?.loaded && !availabilityData[month]?.error)return availabilityData[month];
+ const existing=availabilityData[month];
+ if(existing?.loaded && !existing.error)return existing;
+
+ // Reuse a request already in progress for this month.
+ const inFlight=monthAvailabilityRequests.get(month);
+ if(inFlight)return inFlight;
+
+ // Do not rapidly retry after HTTP 429 or another availability error.
+ if(existing?.error && existing.retryAfter && Date.now()<existing.retryAfter)return existing;
+
  availabilityData[month] ||= {days:{}};
- availabilityData[month].loading=true;
+ const monthData=availabilityData[month];
+ monthData.loading=true;
+ monthData.error=false;
  const days=daysInMonth(year,monthIndex);
- for(let d=1;d<=days;d++)availabilityData[month].days[dateKey(year,monthIndex,d)]={loading:true,slots:[]};
+ for(let d=1;d<=days;d++)monthData.days[dateKey(year,monthIndex,d)]={loading:true,slots:[]};
  renderCalendar();
+
+ const request=(async()=>{
+  try{
+   const response=await fetch(`${API_BASE_URL}/api/availability/month?year=${year}&month=${monthIndex+1}`,{cache:'no-store'});
+   if(!response.ok)throw new Error(`Month availability request failed: ${response.status}`);
+   const payload=await response.json();
+   for(let d=1;d<=days;d++){
+    const key=dateKey(year,monthIndex,d);
+    monthData.days[key]={loading:false,error:false,slots:payload.days?.[key]?.slots||[],capacity:payload.capacity||{}};
+    availabilityCache.set(key,monthData.days[key]);
+    loadingDays.delete(key);
+   }
+   monthData.loaded=true;
+   monthData.loading=false;
+   monthData.error=false;
+   monthData.retryAfter=0;
+   return monthData;
+  }catch(error){
+   console.error('Month availability check failed',month,error);
+   for(let d=1;d<=days;d++){
+    const key=dateKey(year,monthIndex,d);
+    monthData.days[key]={loading:false,error:true,slots:[]};
+    availabilityCache.set(key,monthData.days[key]);
+    loadingDays.delete(key);
+   }
+   monthData.loaded=true;
+   monthData.loading=false;
+   monthData.error=true;
+   monthData.retryAfter=Date.now()+MONTH_AVAILABILITY_RETRY_COOLDOWN_MS;
+   return monthData;
+  }finally{
+   renderCalendar();
+  }
+ })();
+
+ monthAvailabilityRequests.set(month,request);
  try{
-  const response=await fetch(`${API_BASE_URL}/api/availability/month?year=${year}&month=${monthIndex+1}`,{cache:'no-store'});
-  if(!response.ok)throw new Error(`Month availability request failed: ${response.status}`);
-  const payload=await response.json();
-  for(let d=1;d<=days;d++){
-   const key=dateKey(year,monthIndex,d);
-   availabilityData[month].days[key]={loading:false,error:false,slots:payload.days?.[key]?.slots||[],capacity:payload.capacity||{}};
-   availabilityCache.set(key,availabilityData[month].days[key]);
-   loadingDays.delete(key);
-  }
-  availabilityData[month].loaded=true;availabilityData[month].loading=false;availabilityData[month].error=false;
-  return availabilityData[month];
- }catch(error){
-  console.error('Month availability check failed',month,error);
-  for(let d=1;d<=days;d++){
-   const key=dateKey(year,monthIndex,d);
-   availabilityData[month].days[key]={loading:false,error:true,slots:[]};
-   loadingDays.delete(key);
-  }
-  availabilityData[month].loaded=true;availabilityData[month].loading=false;availabilityData[month].error=true;
-  return availabilityData[month];
- }finally{renderCalendar();}
+  return await request;
+ }finally{
+  if(monthAvailabilityRequests.get(month)===request)monthAvailabilityRequests.delete(month);
+ }
 }
 async function fetchDayAvailability(key){
  const cached=availabilityCache.get(key);if(cached && !cached.error)return cached;
@@ -525,7 +558,6 @@ function syncLessonPreferenceButtons(){
    b.style.boxShadow=selected?'0 0 0 2px rgba(36,119,185,.18)':'none';
    b.style.background=selected?'#eef7ff':'#fff';
   });
-  fetchMonthAvailability();
  }));
  const syncButtons=()=>wrap.querySelectorAll('[data-preference]').forEach(b=>{
   const selected=b.dataset.preference===lessonPreference;b.setAttribute('aria-pressed',String(selected));
@@ -540,8 +572,8 @@ if(calendarGrid){
  calendarGrid.addEventListener('click',handleCalendarDayClick);
  calendarGrid.addEventListener('keydown',handleCalendarKeydown);
 }
-const sessionControl=document.querySelector('#session-type');if(sessionControl)sessionControl.addEventListener('change',async e=>{if(activeHold)await releaseActiveHold(false);sessionType=e.target.value;selectedSlot=null;reconcileSelectedDate();syncBookingControls();renderCalendar();fetchMonthAvailability()});
-const groupControl=document.querySelector('#group-size');if(groupControl)groupControl.addEventListener('change',async e=>{if(activeHold)await releaseActiveHold(false);groupSize=Number(e.target.value);if(groupSize>1)lessonPreference='private';selectedSlot=null;reconcileSelectedDate();syncBookingControls();refreshLessonPreferenceLabels();renderCalendar();fetchMonthAvailability()});
+const sessionControl=document.querySelector('#session-type');if(sessionControl)sessionControl.addEventListener('change',async e=>{if(activeHold)await releaseActiveHold(false);sessionType=e.target.value;selectedSlot=null;reconcileSelectedDate();syncBookingControls();renderCalendar()});
+const groupControl=document.querySelector('#group-size');if(groupControl)groupControl.addEventListener('change',async e=>{if(activeHold)await releaseActiveHold(false);groupSize=Number(e.target.value);if(groupSize>1)lessonPreference='private';selectedSlot=null;reconcileSelectedDate();syncBookingControls();refreshLessonPreferenceLabels();renderCalendar()});
 const prev=document.querySelector('#prev-month');if(prev)prev.addEventListener('click',()=>changeMonth(-1));
 const next=document.querySelector('#next-month');if(next)next.addEventListener('click',()=>changeMonth(1));
 async function renderAvailabilityPreview(){
