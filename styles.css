@@ -272,3 +272,33 @@ header{position:absolute;z-index:20;top:0;left:0;width:100%;color:#fff}.site-hea
 
 /* Privacy policy */
 .footer-privacy{margin-top:22px;padding-top:16px;border-top:1px solid rgba(255,255,255,.1);font-size:.75rem}.footer-privacy a{color:#d5dbd8;text-decoration:underline;text-underline-offset:3px}.booking-privacy-note{margin:12px 0 18px;font-size:.78rem;line-height:1.6;color:var(--stone)}.booking-privacy-note a{color:var(--black);text-decoration:underline;text-underline-offset:3px}.privacy-content{max-width:850px;padding:0 0 90px}.privacy-content section{padding:24px 0;border-top:1px solid var(--line)}.privacy-content h2{font-size:1.3rem;margin-bottom:12px}.privacy-content p{max-width:800px;line-height:1.8}.privacy-content a{color:inherit;text-decoration:underline;text-underline-offset:3px}.privacy-updated{font-size:.75rem;color:var(--stone);margin-top:25px}
+
+
+/* V1.1.5 — keep pricing and booking content visible on desktop screens */
+@media (min-width: 901px) {
+  .pricing-page .page-intro,
+  .booking-page .page-intro {
+    grid-template-columns: minmax(0, 1.08fr) minmax(280px, .82fr);
+    gap: clamp(32px, 4vw, 60px);
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  .pricing-page .page-intro h1,
+  .booking-page .page-intro h1 {
+    font-size: clamp(3.25rem, 4.2vw, 4.5rem);
+    line-height: 1.08;
+    letter-spacing: -.045em;
+    max-width: 680px;
+  }
+
+  .pricing-page .page-intro p,
+  .booking-page .page-intro p {
+    font-size: .98rem;
+    line-height: 1.65;
+  }
+
+  .pricing-page .pricing-feature-grid strong {
+    font-size: clamp(2.2rem, 2.8vw, 2.8rem);
+  }
+}
