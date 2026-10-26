@@ -1,0 +1,12 @@
+Thurston Alpine Frontend v1.1.9
+=================================
+
+Calendar availability request fix:
+- Added in-flight request deduplication so concurrent requests for the same month share one network request.
+- Added a 30-second retry cooldown after a failed monthly availability request, including HTTP 429 responses.
+- Session, group-size and private/shared preference changes now re-filter the already-loaded availability locally rather than re-requesting the month.
+- Preserved the backend URL, calendar response mapping, temporary holds, booking submission, and all v1.1.8 navigation/local-file fixes.
+
+Deployment note:
+- Frontend-only change. No Cloud Run backend, Google OAuth, Google Calendar credentials, or booking mutation rate limits need to be changed.
+- After deployment, verify monthly availability returns HTTP 200 and changing session/group options does not trigger repeated monthly requests.
