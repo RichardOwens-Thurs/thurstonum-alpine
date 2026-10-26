@@ -14,7 +14,7 @@
   <div class="nav-right">
    <nav class="nav-links">
     <a href="/#about" data-i18n="nav.about">About</a>
-    <a href="lessons.html" data-i18n="nav.lessons">Lessons</a>
+    <a href="/lessons.html" data-i18n="nav.lessons">Lessons</a>
     <a href="learning.html" data-i18n="nav.learning">Learning</a>
     <a href="pricing.html" data-i18n="nav.pricing">Pricing</a>
     <a href="booking.html" data-i18n="nav.availability">Availability</a>
@@ -66,5 +66,19 @@
  </section>
 </main>
 <footer><div class="container"><div class="footer-grid"><div><img class="footer-logo" src="assets/logo-dark.png" alt="Thurston Alpine"><p data-i18n="footer">Private snowboard instruction · Churwalden · Lenzerheide · Graubünden</p></div><div><p>© <span data-year></span> Thurston Alpine</p><p><a class="footer-contact" href="tel:+41762297753">+41 76 229 77 53</a><br><a class="footer-contact" href="mailto:info@thurston-alpine.ch">info@thurston-alpine.ch</a></p><p>EN / DE</p></div></div><div class="footer-bottom"><span>Private snowboard instruction</span><span>Churwalden · Graubünden, Switzerland</span></div></div><div class="container footer-privacy"><a href="privacy.html" data-i18n="privacy.link">Privacy Policy</a></div></footer>
-<script src="script.js"></script>
+<script>
+/* Local-file preview support: keep production root-relative links unchanged online. */
+if (window.location.protocol === "file:") {
+  document.querySelectorAll('a[href^="/"]').forEach(function (link) {
+    var path = link.getAttribute("href");
+    if (path === "/") {
+      link.setAttribute("href", "index.html");
+    } else if (path.startsWith("/#")) {
+      link.setAttribute("href", "index.html" + path.slice(1));
+    } else {
+      link.setAttribute("href", path.slice(1));
+    }
+  });
+}
+</script><script src="script.js"></script>
 </body></html>

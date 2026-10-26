@@ -1,0 +1,12 @@
+Thurston Alpine Frontend v1.1.8
+=================================
+
+Local testing fix:
+- Added a small file://-only navigation compatibility helper to HTML pages.
+- When opened directly from an extracted folder, root-relative links are mapped to local relative paths:
+  / -> index.html
+  /#about -> index.html#about
+  /lessons.html -> lessons.html
+- On the live HTTPS website, links are left unchanged. Production navigation continues to use the canonical root paths and /lessons.html.
+
+All v1.1.7 and v1.1.6 changes are retained.

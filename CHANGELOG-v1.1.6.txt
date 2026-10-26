@@ -1,0 +1,12 @@
+Thurston Alpine Frontend v1.1.6
+=================================
+
+Homepage availability preview:
+- Heading changed to: "Short term notice?"
+- English description changed to the requested wording:
+  "No issue, see the upcoming available dates at a glance. When you are ready to choose a session and time, open the full booking calendar."
+- German heading and description updated to equivalent natural German wording.
+- Removed the "Demo availability" wording, replacing it with "Live availability" (and "Live-Verfügbarkeit" in German).
+- The preview now skips today and tomorrow. It starts checking from the day after tomorrow and searches up to 45 days ahead to find up to six available dates.
+
+All v1.1.5 changes are retained, including desktop typography refinements and homepage root links.

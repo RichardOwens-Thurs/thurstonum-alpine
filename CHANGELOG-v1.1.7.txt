@@ -1,0 +1,9 @@
+Thurston Alpine Frontend v1.1.7
+=================================
+
+Navigation fix:
+- The top navigation "Lessons" link now points to /lessons.html on every page.
+- It no longer points to /#lessons when clicked from internal pages.
+- The link is consistent on the homepage and all other HTML pages, in both EN and DE because the existing language switch only changes link text.
+
+All v1.1.6 changes are retained, including the updated short-notice availability preview, skipping today and tomorrow in the date preview, and desktop typography refinements.
