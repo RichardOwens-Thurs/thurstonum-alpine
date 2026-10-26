@@ -1,0 +1,29 @@
+THURSTON ALPINE — FULL FRONTEND PACKAGE
+
+This ZIP contains the complete frontend website folder, with the standalone Lessons page added.
+
+Included:
+- Existing frontend HTML pages, CSS, JavaScript, and assets
+- New lessons.html page
+- Updated homepage navigation/lesson links and styling
+- assets/private-lesson-carve.png
+- assets/shared-lesson-riders.png
+
+Preserved:
+- learning.html from the original frontend baseline
+- booking.html and the existing booking frontend
+- Existing images and other frontend assets
+
+Excluded intentionally:
+- Backend source and configuration
+- node_modules
+- .git and git.old repository metadata
+
+To use:
+1. Back up your current Branch and Git-connected frontend folders.
+2. Extract this ZIP to a new temporary folder first and inspect it.
+3. If it looks correct, copy the CONTENTS of this folder into your frontend folder(s), allowing files to be overwritten when prompted.
+4. Do not copy any backend configuration into the frontend repository.
+5. Test locally before committing/publishing.
+
+Note: This is a frontend package; it does not deploy itself or change GitHub settings.

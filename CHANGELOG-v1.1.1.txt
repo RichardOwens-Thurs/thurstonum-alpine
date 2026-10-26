@@ -1,0 +1,9 @@
+Thurston Alpine frontend v1.1.1
+
+- Added bilingual Privacy Policy page (privacy.html).
+- Added Privacy Policy link to the footer across all pages.
+- Added a privacy notice and link directly below the booking summary on Availability & Booking.
+- Added English and German copy using the existing language switcher.
+- No booking logic or prices changed.
+
+Note: The privacy text reflects the currently understood hosting, calendar, email and cash-payment setup. Confirm the exact booking backend/data flow and retention practices before treating it as final legal advice.
