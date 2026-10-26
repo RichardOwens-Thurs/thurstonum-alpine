@@ -1,0 +1,12 @@
+Thurston Alpine Frontend v1.1.4
+================================
+
+Fix:
+- Changed homepage/logo links from index.html to the site root (/), so navigation uses
+  https://thurston-alpine.ch/ instead of showing /index.html in the address bar.
+- Updated homepage section links such as About to use /#about.
+- No booking logic, API configuration, pricing, translations, privacy content, or assets changed.
+
+Validation:
+- ZIP integrity verified.
+- Checked HTML files for remaining homepage links pointing to index.html.

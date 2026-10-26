@@ -1,0 +1,12 @@
+Thurston Alpine Frontend v1.1.5
+=================================
+
+Change:
+- Reduced the oversized page title on the Pricing and Availability & Booking pages on desktop/laptop widths.
+- Tightened the vertical padding around those page introductions so the pricing table and booking controls appear sooner.
+- Slightly reduced the pricing feature figures on desktop.
+- Changes are scoped to screens wider than 900px; the existing mobile/tablet typography rules remain unchanged.
+- Includes the v1.1.4 homepage-link improvements.
+
+Deployment:
+Replace the existing frontend files with this package in your current GitHub repository, then commit and release as usual.
