@@ -179,6 +179,10 @@ header{position:absolute;z-index:20;top:0;left:0;width:100%;color:#fff}.site-hea
 .price-table thead th{font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;color:#aebcc0;font-weight:750}
 .price-table tbody th{text-align:left;color:#fff;font-weight:650}
 .price-table td{color:#e7eae8}
+.price-total{display:block;font-weight:650;font-size:.82rem;color:#fff}
+.price-per-person{display:block;margin-top:5px;font-size:.66rem;line-height:1.35;color:#aebcc0;font-weight:400}
+.price-table thead th span{display:block;margin-top:3px;font-size:.55rem;letter-spacing:.04em;text-transform:none;color:#929995}
+.booking-price-per-person{display:block;font-size:.72rem;color:#c7ccca;margin-top:3px}
 .price-note{font-size:.68rem!important;color:#929995!important;margin:11px 0 0!important}
 .booking-options{display:grid;grid-template-columns:1.2fr 1fr .8fr;gap:15px;margin-top:35px;align-items:end}
 .booking-options>div{display:grid;gap:7px}
@@ -300,5 +304,74 @@ header{position:absolute;z-index:20;top:0;left:0;width:100%;color:#fff}.site-hea
 
   .pricing-page .pricing-feature-grid strong {
     font-size: clamp(2.2rem, 2.8vw, 2.8rem);
+  }
+}
+
+
+/* v1.2.1 — homepage snowboarding FAQ accordion */
+.home-faq {
+  background: var(--paper, #f5f6f4);
+}
+.home-faq .faq-intro {
+  max-width: 760px;
+  margin: 0 0 32px;
+}
+.home-faq .faq-intro h2 {
+  margin: 10px 0 14px;
+}
+.home-faq .faq-intro > p {
+  max-width: 620px;
+}
+.home-faq .faq-list {
+  max-width: 980px;
+  border-top: 1px solid var(--line, #d9ddda);
+}
+.home-faq .faq-item {
+  border-bottom: 1px solid var(--line, #d9ddda);
+}
+.home-faq .faq-item summary {
+  position: relative;
+  list-style: none;
+  cursor: pointer;
+  padding: 22px 48px 22px 2px;
+  font-weight: 650;
+  line-height: 1.45;
+}
+.home-faq .faq-item summary::-webkit-details-marker {
+  display: none;
+}
+.home-faq .faq-item summary::after {
+  content: "+";
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+.home-faq .faq-item[open] summary::after {
+  content: "−";
+}
+.home-faq .faq-item summary:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+.home-faq .faq-answer {
+  padding: 0 42px 20px 2px;
+  max-width: 850px;
+}
+.home-faq .faq-answer p {
+  margin: 0;
+  line-height: 1.75;
+}
+@media (max-width: 640px) {
+  .home-faq .faq-item summary {
+    padding-top: 18px;
+    padding-bottom: 18px;
+    padding-right: 36px;
+  }
+  .home-faq .faq-answer {
+    padding-right: 4px;
+    padding-bottom: 18px;
   }
 }

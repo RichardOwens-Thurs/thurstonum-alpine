@@ -1,0 +1,8 @@
+Thurston Alpine Frontend v1.2.2
+
+Fix: Corrected FAQ language dictionaries in script.js.
+- English FAQ text now belongs only to I18N.en.faq.
+- German FAQ text now belongs to I18N.de.faq.
+- Prevents German FAQ text overwriting the English FAQ and prevents the German FAQ section from rendering blank.
+
+No HTML structure, styles, booking/calendar logic, API URL, or backend files changed.

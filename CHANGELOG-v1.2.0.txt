@@ -1,0 +1,10 @@
+Thurston Alpine Frontend v1.2.0
+================================
+
+Footer cleanup:
+- Removed the demo label from the frontend files where it was present.
+- Retained the existing bilingual language selector/navigation functionality and all booking/calendar fixes from v1.1.9.
+
+Validation:
+- ZIP integrity checked.
+- Packaged frontend files scanned to confirm the footer label is absent.

@@ -1,0 +1,11 @@
+Thurston Alpine frontend v1.2.7 — five-day calendar integration draft
+
+- Keeps the calendar visible when Five-day is selected.
+- Uses backend-provided five-day availability for each start date and group size.
+- Shows the five consecutive dates and 09:00–15:00 daily hours.
+- Creates a temporary hold through the existing booking flow using the five-day session ID.
+- Updates booking summary and hidden enquiry details with the full date range.
+- Invalidates all five affected calendar dates after hold, release, or booking.
+- Keeps Shared available for group sizes 1–3; disables it only at 4 riders.
+
+Requires the matching backend five-day implementation. Not yet deployed.
