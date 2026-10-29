@@ -1,0 +1,7 @@
+Thurston Alpine v1.2.4
+
+Bug fixes
+- Fixed the Private/Shared lesson choice highlight so the selected option consistently displays the blue selected state.
+- The Private lesson CTA on Lessons now opens Availability with Private selected.
+- The Shared lesson CTA on Lessons now opens Availability with Shared selected.
+- Existing booking calendar, pricing, API requests and backend behaviour are otherwise unchanged.

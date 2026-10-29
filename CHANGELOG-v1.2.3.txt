@@ -1,0 +1,12 @@
+Thurston Alpine v1.2.3
+
+Pricing update
+- Updated group pricing for 1-hour, half-day and full-day sessions.
+- Added 5-day / 30-hour package pricing to the pricing table.
+- Added per-person prices in smaller text beneath booking totals.
+- Updated the availability page price display, selected-slot summary, booking summary and submitted price field to show total and per-person amounts for the selected session and group size.
+- Kept the 5-day package on the pricing page only; the current availability calendar supports single-day session lengths and should not offer a multi-day booking until backend scheduling supports it.
+
+Bug fixes (follow-up)
+- Made the selected Private/Shared lesson state consistently apply the blue highlight and selected accessibility state.
+- Updated the Lessons page CTAs to pass the intended lesson choice to Availability: Private opens with Private selected; Shared opens with Shared selected.

@@ -1,20 +1,13 @@
-Thurston Alpine — V18
+Thurston Alpine frontend — v1.2.7 (five-day calendar integration draft)
 
-Updates in V18:
-- Added clear private coaching pricing.
-- 1 hour: CHF 90 / 115 / 140 / 165 for 1–4 people.
-- Half day (3 hours): CHF 225 / 250 / 275 / 300 for 1–4 people.
-- Full day (6 hours): CHF 400 / 450 / 500 / 550 for 1–4 people.
-- Prices are per booking, not per person.
-- Added session and group-size selectors to the availability calendar.
-- Calendar now filters available start times according to the selected session length.
-- 1-hour sessions can start hourly between 09:00 and 14:00.
-- Half-day sessions offer 09:00 and 12:00 starts.
-- Full-day sessions offer a 09:00 start.
-- Added sample December 2026 and January 2027 availability with closed dates for demonstration.
-- Added next/previous month controls for the demo months.
-- Booking summary and enquiry form are populated with selected session, group size, requested time and price.
-- Added phone and riding-level fields to the booking enquiry form.
-- Added English/German translations for the new booking and pricing interface.
+This package contains the website frontend, including the current pricing table, booking UI, shared lesson selection, translations, privacy page and assets.
 
-This remains a front-end demonstration. It does not yet create or hold real reservations or process payment. The next production step is connecting the availability blocks to a real calendar/booking backend.
+Changes in v1.2.7:
+- The five-day package uses the availability calendar instead of an email-only enquiry.
+- Start dates are enabled only when the backend reports the complete five-day range available for the selected lesson preference and group size.
+- The package reserves 09:00 on the selected date through 15:00 four calendar days later, in Swiss local time.
+- Booking summary and hidden enquiry details show the full date range.
+- Calendar cache is invalidated across all five days after creating/releasing a hold or submitting a booking.
+- Shared lesson selection remains available for groups of 1–3; it is disabled at 4 riders.
+
+The matching backend release is required. This package has passed JavaScript syntax and ZIP integrity checks, but still requires functional testing against Google Calendar before production deployment.

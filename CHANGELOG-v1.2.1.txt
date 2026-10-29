@@ -1,0 +1,14 @@
+Thurston Alpine Frontend v1.2.1
+=================================
+
+Homepage FAQ:
+- Added four expandable snowboarding lesson FAQs before the homepage footer.
+- Uses native HTML details/summary elements for keyboard-accessible disclosure without additional JavaScript.
+- Added English and German FAQ text through the existing language system.
+
+Local SEO / Lessons page:
+- Updated the Lessons page CTA text to naturally mention private snowboard lessons in Churwalden, Lenzerheide and Laax, Graubünden, Switzerland.
+- Updated the Lessons page title and meta description to accurately describe the service and locations.
+- Corrected spelling and polished the supplied customer-facing text while preserving its meaning.
+
+All v1.2.0 functionality is retained, including the calendar request deduplication and navigation fixes.

@@ -1,0 +1,5 @@
+Thurston Alpine v1.2.5
+
+- Fixed lesson-choice selected styling across all group sizes. Shared lesson is visibly unavailable when more than one person is selected, matching the existing one-rider shared-booking rule.
+- Added the five-day package to the Availability session dropdown with group-aware total and per-person pricing.
+- Five-day packages are enquiry-only until multi-day calendar holds are supported by the backend; the calendar is hidden for this option to avoid implying that five consecutive days can be reserved automatically.
